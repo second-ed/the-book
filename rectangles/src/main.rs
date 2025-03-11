@@ -28,12 +28,9 @@ fn main() {
     };
 
     let sq = Rectangle::square(20);
-    
+
     dbg!(&rect1);
     dbg!(&rect1.area());
     dbg!(&sq);
     dbg!(rect1.can_hold(&sq));
-
 }
-
-
