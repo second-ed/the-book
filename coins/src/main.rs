@@ -15,32 +15,36 @@ enum Coin {
     Pound,
 }
 
-fn value_in_pence(coin: &Coin) -> u8 {
-    match coin {
-        Coin::OneP => 1,
-        Coin::TwoP => 2,
-        Coin::FiveP => 5,
-        Coin::TenP => 10,
-        Coin::TwentyP => 20,
-        Coin::FiftyP(design) => {
-            println!("got special {:?} 50p", design);
-            50
-        }
-        Coin::Pound => 100,
+fn value_in_pence(item: &Option<Coin>) -> Option<u8> {
+    match item {
+        Some(coin) => match coin {
+            Coin::OneP => Some(1),
+            Coin::TwoP => Some(2),
+            Coin::FiveP => Some(5),
+            Coin::TenP => Some(10),
+            Coin::TwentyP => Some(20),
+            Coin::FiftyP(design) => {
+                println!("got special {:?} 50p", design);
+                Some(50)
+            }
+            Coin::Pound => Some(100),
+        },
+        _ => None,
     }
 }
 
 fn main() {
     let change = [
-        Coin::Pound,
-        Coin::TenP,
-        Coin::TwoP,
-        Coin::FiftyP(SpecialDesign::Olympic),
+        Some(Coin::Pound),
+        Some(Coin::TenP),
+        Some(Coin::TwoP),
+        None,
+        Some(Coin::FiftyP(SpecialDesign::Olympic)),
     ];
 
     let mut total: u16 = 0;
     for coin in change {
-        let val = value_in_pence(&coin);
+        let val = value_in_pence(&coin).unwrap_or(0);
         println!("{val}");
         total += val as u16;
     }
