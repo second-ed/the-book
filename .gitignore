@@ -55,6 +55,7 @@ no_llvm_build
 /src/bootstrap/target
 /src/ci/citool/target
 /src/tools/x/target
+*target/
 # Created by `x vendor`
 /vendor
 # Created by default with `src/ci/docker/run.sh`
