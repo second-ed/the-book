@@ -1,14 +1,22 @@
 use std::fs::File;
-use std::io::ErrorKind;
+use std::io::{self, Read};
 
 fn main() {
-    let greeting_file_res = File::open("hello.txt").unwrap_or_else(|error| {
-        if error.kind() == ErrorKind::NotFound {
-            File::create("hello.txt").unwrap_or_else(|error| {
-                panic!("problem creating the file: {:?}", error);
-            })
-        } else {
-            panic!("problem opening the file {:?}", error);
-        }
-    });
+    dbg!(read_str_from_file());
+}
+
+fn read_str_from_file() -> Result<String, io::Error> {
+    let str_file_res = File::open("hello.txt");
+
+    let mut str_file = match str_file_res {
+        Ok(file) => file,
+        Err(e) => return Err(e),
+    };
+
+    let mut res = String::new();
+
+    match str_file.read_to_string(&mut res) {
+        Ok(_) => Ok(res),
+        Err(e) => Err(e),
+    }
 }
