@@ -6,17 +6,10 @@ fn main() {
 }
 
 fn read_str_from_file() -> Result<String, io::Error> {
-    let str_file_res = File::open("hello.txt");
-
-    let mut str_file = match str_file_res {
-        Ok(file) => file,
-        Err(e) => return Err(e),
-    };
+    let mut str_file = File::open("hello.txt")?;
 
     let mut res = String::new();
 
-    match str_file.read_to_string(&mut res) {
-        Ok(_) => Ok(res),
-        Err(e) => Err(e),
-    }
+    str_file.read_to_string(&mut res)?;
+    Ok(res)
 }
