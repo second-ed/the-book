@@ -26,12 +26,19 @@ struct Point<T, U> {
     y: U,
 }
 
+impl<T, U> Point<T, U> {
+    fn x(&self) -> &T {
+        &self.x
+    }
+}
+
 fn create_points() {
     let both_int = Point { x: 5, y: 10 };
     let both_float = Point { x: 1.0, y: 4.0 };
     let mixed_types = Point { x: 't', y: 4.2 };
 
-    dbg!(both_int);
-    dbg!(both_float);
-    dbg!(mixed_types);
+    dbg!(&both_int);
+    dbg!(&both_float);
+    dbg!(&mixed_types);
+    dbg!(&both_int.x());
 }
