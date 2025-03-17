@@ -32,6 +32,12 @@ impl<T, U> Point<T, U> {
     }
 }
 
+impl Point<f32, f32> {
+    fn dist_from_origin(&self) -> f32 {
+        (self.x.powi(2) + self.y.powi(2)).sqrt()
+    }
+}
+
 fn create_points() {
     let both_int = Point { x: 5, y: 10 };
     let both_float = Point { x: 1.0, y: 4.0 };
@@ -41,4 +47,5 @@ fn create_points() {
     dbg!(&both_float);
     dbg!(&mixed_types);
     dbg!(&both_int.x());
+    dbg!(&both_float.dist_from_origin());
 }
