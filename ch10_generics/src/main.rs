@@ -6,6 +6,7 @@ fn main() {
     let chars = vec!['y', 'm', 'a', 'q'];
     let result = largest(&chars);
     dbg!(result);
+    create_points();
 }
 
 fn largest<T: std::cmp::PartialOrd>(list: &[T]) -> &T {
@@ -17,4 +18,20 @@ fn largest<T: std::cmp::PartialOrd>(list: &[T]) -> &T {
         }
     }
     largest
+}
+
+#[derive(Debug)]
+struct Point<T, U> {
+    x: T,
+    y: U,
+}
+
+fn create_points() {
+    let both_int = Point { x: 5, y: 10 };
+    let both_float = Point { x: 1.0, y: 4.0 };
+    let mixed_types = Point { x: 't', y: 4.2 };
+
+    dbg!(both_int);
+    dbg!(both_float);
+    dbg!(mixed_types);
 }
