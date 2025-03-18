@@ -1,3 +1,5 @@
+use ch10_generics::use_traits;
+
 fn main() {
     let numbers = vec![34, 50, 25, 100, 65];
     let result = largest(&numbers);
@@ -7,6 +9,7 @@ fn main() {
     let result = largest(&chars);
     dbg!(result);
     create_points();
+    use_traits();
 }
 
 fn largest<T: std::cmp::PartialOrd>(list: &[T]) -> &T {
