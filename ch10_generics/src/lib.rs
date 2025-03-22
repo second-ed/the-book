@@ -46,4 +46,11 @@ pub fn use_traits() {
     };
 
     dbg!(article.summarise());
+
+    notify(&tweet);
+    notify(&article);
+}
+
+pub fn notify(item: &impl Summary) {
+    println!("Breaking news! {}", item.summarise());
 }
