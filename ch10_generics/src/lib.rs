@@ -1,3 +1,5 @@
+use std::fmt::Display;
+
 pub trait Summary {
     fn summarise(&self) -> String;
 }
@@ -49,8 +51,35 @@ pub fn use_traits() {
 
     notify(&tweet);
     notify(&article);
+
+    let pair = Pair::new(4, 6);
+    (&pair).cmp_display();
+
+    let pair_2 = Pair::new(12, 6);
+    (&pair_2).cmp_display();
 }
 
 pub fn notify(item: &impl Summary) {
     println!("Breaking news! {}", item.summarise());
+}
+
+struct Pair<T> {
+    x: T,
+    y: T,
+}
+
+impl<T> Pair<T> {
+    fn new(x: T, y: T) -> Self {
+        Self { x, y }
+    }
+}
+
+impl<T: Display + PartialOrd> Pair<T> {
+    fn cmp_display(&self) {
+        if self.x >= self.y {
+            println!("The largest member is x = {}", self.x);
+        } else {
+            println!("The largest member is y = {}", self.y);
+        }
+    }
 }

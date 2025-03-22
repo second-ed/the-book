@@ -10,6 +10,11 @@ fn main() {
     dbg!(result);
     create_points();
     use_traits();
+
+    let string1 = String::from("abcd");
+    let string2 = "xyz";
+    let longest_str = longest(string1.as_str(), string2);
+    dbg!(longest_str);
 }
 
 fn largest<T: std::cmp::PartialOrd>(list: &[T]) -> &T {
@@ -51,4 +56,12 @@ fn create_points() {
     dbg!(&mixed_types);
     dbg!(&both_int.x());
     dbg!(&both_float.dist_from_origin());
+}
+
+fn longest<'a>(x: &'a str, y: &'a str) -> &'a str {
+    if x.len() > y.len() {
+        x
+    } else {
+        y
+    }
 }
