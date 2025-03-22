@@ -53,10 +53,10 @@ pub fn use_traits() {
     notify(&article);
 
     let pair = Pair::new(4, 6);
-    (&pair).cmp_display();
+    (pair).cmp_display();
 
     let pair_2 = Pair::new("y", "a");
-    (&pair_2).cmp_display();
+    (pair_2).cmp_display();
 }
 
 pub fn notify(item: &impl Summary) {
