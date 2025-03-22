@@ -55,7 +55,7 @@ pub fn use_traits() {
     let pair = Pair::new(4, 6);
     (&pair).cmp_display();
 
-    let pair_2 = Pair::new(12, 6);
+    let pair_2 = Pair::new("y", "a");
     (&pair_2).cmp_display();
 }
 
