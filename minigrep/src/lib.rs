@@ -1,4 +1,3 @@
-use std::env;
 use std::error::Error;
 use std::fs;
 
@@ -26,9 +25,8 @@ impl Config {
 pub fn run(config: Config) -> Result<(), Box<dyn Error>> {
     let contents = fs::read_to_string(config.file_path)?;
 
-    // println!("With text:\n\n{contents}\n\n");
     for line in search(&config.query, &contents) {
-        println!("{line}");
+        println!("FOUND [{0}]: {line}", &config.query);
     }
     Ok(())
 }
