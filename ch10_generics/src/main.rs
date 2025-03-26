@@ -1,4 +1,5 @@
 use ch10_generics::use_traits;
+use std::fmt::Display;
 
 fn main() {
     let numbers = vec![34, 50, 25, 100, 65];
@@ -15,6 +16,8 @@ fn main() {
     let string2 = "xyz";
     let longest_str = longest(string1.as_str(), string2);
     dbg!(longest_str);
+
+    let _ = longest_with_an_announcement("abcd", "xyz", 2);
 }
 
 fn largest<T: std::cmp::PartialOrd>(list: &[T]) -> &T {
@@ -59,9 +62,13 @@ fn create_points() {
 }
 
 fn longest<'a>(x: &'a str, y: &'a str) -> &'a str {
-    if x.len() > y.len() {
-        x
-    } else {
-        y
-    }
+    if x.len() > y.len() { x } else { y }
+}
+
+fn longest_with_an_announcement<'a, T>(x: &'a str, y: &'a str, ann: T) -> &'a str
+where
+    T: Display,
+{
+    println!("announcement! {ann}");
+    if x.len() > y.len() { x } else { y }
 }
