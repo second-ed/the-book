@@ -1,6 +1,7 @@
 fn main() {
     capturing_references_or_moving_ownership();
     example_sort_by_key();
+    processing_items_with_iterators();
 }
 
 fn capturing_references_or_moving_ownership() {
@@ -104,4 +105,13 @@ fn example_sort_by_key() {
         r.width
     });
     println!("{:#?}, sorted in {num_sort_operations} operations", list);
+}
+
+fn processing_items_with_iterators() {
+    let v1 = vec![1, 2, 3];
+    let v1_iter = v1.iter();
+
+    for val in v1_iter {
+        println!("Got: {val}");
+    }
 }
