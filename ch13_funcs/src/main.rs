@@ -114,4 +114,13 @@ fn processing_items_with_iterators() {
     for val in v1_iter {
         println!("Got: {val}");
     }
+
+    let v2 = vec![1, 2, 4, 8];
+    let v2_iter = v2.iter();
+    let total: i32 = v2_iter.sum();
+    println!("total: {total}");
+
+    let v3 = vec![0, 1, 3];
+    let v3_iter = v3.iter().map(|x| x + 1);
+    println!("{:?}", v3_iter);
 }
