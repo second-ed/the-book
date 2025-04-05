@@ -121,6 +121,6 @@ fn processing_items_with_iterators() {
     println!("total: {total}");
 
     let v3 = vec![0, 1, 3];
-    let v3_iter = v3.iter().map(|x| x + 1);
+    let v3_iter: Vec<i32> = v3.iter().map(|x| x + 1).collect();
     println!("{:?}", v3_iter);
 }
